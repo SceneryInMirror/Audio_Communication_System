@@ -122,7 +122,6 @@ s_downsample = downsample(s_receive, 8); % 8 times downsample
 %plot(s_downsample)
 %subplot(2,1,2)
 %plot(abs(fft(s_downsample)))
-
 %%%%%%%%%%%%%%%%%%%%%%
 %%% 8PSK Judgement %%%
 %%%%%%%%%%%%%%%%%%%%%%
@@ -140,7 +139,19 @@ plot(s_demodulate_Q);
 %plot(abs(fft(s_demodulate_Q)));
 
 bits_result = [];
-
+for n = 25:Nb:Nb * Ns
+    if s_demodulate_I(n) > 0.85
+        bits_result = [bits_result [0, 0, 0]];
+    elseif s_demodulate_I(n) <= 0.85 & s_demodulate_I(n) > 0.35
+        bits_result = [bits_result [0, 0, 1];
+    elseif s_demodulate_I(n) <= 0.85 & s_demodulate_I(n) > 0.35
+        if s_demodulate_Q(n) > 0
+            bits_result = [bits_result [0, 0, 1];
+        else
+            bits_result = [bits_result [1, 0, 1];
+        endelseif 
+  end
+end
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

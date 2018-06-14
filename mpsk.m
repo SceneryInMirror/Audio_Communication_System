@@ -8,9 +8,9 @@ mpsk_cos = [];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Generate Digital Signal %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-amp_sin = [1, 1/sqrt(2), 0, -1/sqrt(2), -1, -1/sqrt(2), 0, 1/sqrt(2)]; % amplitude options for Q_signal 
-amp_cos = [0, 1/sqrt(2), 1, 1/sqrt(2), 0, -1/sqrt(2), -1, -1/sqrt(2)]; % amplitude options for I_signal
-Nb = 100; % point number in digital signal per bit
+amp_cos = [1, 1/sqrt(2), 0, -1/sqrt(2), -1, -1/sqrt(2), 0, 1/sqrt(2)]; % amplitude options for Q_signal 
+amp_sin = [0, 1/sqrt(2), 1, 1/sqrt(2), 0, -1/sqrt(2), -1, -1/sqrt(2)]; % amplitude options for I_signal
+Nb = 1000; % point number in digital signal per bit
 dphi = 2 * pi / Nb;
 phi = dphi:dphi:2*pi;
 for n = 1:Ns
