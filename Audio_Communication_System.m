@@ -51,8 +51,6 @@ saveas(1, [basepath 'figure/audio.png']);
 
 %% Generate 8PSK Signal
 
-fc = 1; % frequency of carrier, also the frequency of symbol
-
 s_mpsk = [];
 s_I = [];
 s_Q = [];
@@ -95,7 +93,7 @@ title('Upsample\_Q\_FD')
 saveas(3, [basepath 'figure/upsample.png']);
 
 
-%% Lowpass Filter
+%% Shaping Filter
 
 hd = HD4;
 myfilter = hd.Numerator;
@@ -148,7 +146,7 @@ for item = 1:16
     hold off;
     saveas(5, fullfile(basepath, 'figure/', string(item), '/awgn.png'));
     
-    %% Lowpass Filter
+    %% Match Filter
 
     %s_receive = real(s_awgn);
     %s_receive = [s_receive imag(s_awgn)];
@@ -257,19 +255,4 @@ plot(bers0.data{1,1}, 10 * log10(bers0.data{1,2}), 'r');
 title('BER(dB)-EbN0(dB)')
 legend('simulate result', 'theoretical calculation');
 saveas(10, [basepath 'figure/BER-EBN0.png']);
-
-%%
-%na = length(Es);          % number of energy per symbol
-%No = 2;                   % noise unit variance (watt/Hz)
-%Es_No = Es/No;              % EsNo
-%Eb_No = Eb/No;              % EbNo
-
-%BER = zeros(1,na);
-%SER = zeros(1,na);
-%Pseint = zeros(1,na);
-
-%dphi = 0.01*pi/M;                   % interval of $\phi$
-%phi = [-pi/M+dphi/2:dphi:pi/M];     % $\phi$
-%nphi = length(phi);                 % number of $\phi$
-
 
